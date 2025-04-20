@@ -11,13 +11,20 @@ def encryption():
         while len(fib) < n + 2:  # Add 2 to ensure enough numbers are generated
             fib.append(fib[-1] + fib[-2])
         return fib[2:]  # Start the sequence from the third number
+    
+    while True:
+        usr_inp = input("Please put a word below\n").replace(" ", "")
+        list_inp = list(usr_inp)
+        len_inp = len(usr_inp)  # encryption based on the length
+        if len_inp < 10 and usr_inp.isalpha():
+            break
+        elif not usr_inp.isalpha():
+            print("Only alphabet characters are allowed.")
+        elif not len_inp < 10:
+            print("Only a maximum of 10 letters are allowed.")
 
-    usr_inp = input("Please put a word below\n").replace(" ", "")
-    list_inp = list(usr_inp)
-    len_inp = len(usr_inp)  # encryption based on the length
 
     fib_indices = fibonacci_sequence(len_inp)
-    print(fib_indices)
     encrypted_message = [''] * max(fib_indices[-1] + 1, len_inp)  # Create a list of empty spaces
 
     # Place letters into Fibonacci indices
